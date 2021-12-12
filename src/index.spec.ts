@@ -7,10 +7,13 @@ describe("font obfuscation", () => {
     const result = await obfuscation({
       fontFile: "examples/example.ttf",
       numKeys: 1,
-      keysOutFolder: "out/keys",
-      fontsFolder: "out/fonts",
     });
 
-    expect(result[0].fontName).toHaveLength(7);
+    const res = result[0]
+
+    expect(res.key).not.toBeNull();
+    expect(res.font).not.toBeNull();
+    expect(res.fontName).toHaveLength(7);
+
   });
 });
