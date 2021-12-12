@@ -1,0 +1,8 @@
+node_modules
+
+translation.json
+
+out/
+
+*.ttf
+*.html
