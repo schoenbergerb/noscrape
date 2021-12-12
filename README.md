@@ -6,7 +6,8 @@
 
 ## project goal
 
-this projects goal is to provide an infrastructure to create an obfuscated font (public-key) and key (private-key) to prevent anyone to scrape content from your protected html output.
+this projects goal is to provide an infrastructure to create an obfuscated font (public-key) and a lookup json (private key) 
+to prevent anyone to scrape content from your obfuscated html output.
 
 <img src="./docs/demo.png">
 
