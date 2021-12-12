@@ -1,4 +1,4 @@
-import obfuscation from "./index";
+import obfuscation from "../src/index";
 
 jest.setTimeout(20000);
 

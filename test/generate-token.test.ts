@@ -1,4 +1,4 @@
-import generateToken from "./generate-token";
+import generateToken from "../src/generate-token";
 
 describe("generate token", () => {
   it("should have given length", () => {
