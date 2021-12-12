@@ -26,9 +26,6 @@ So please beware of using this technique on relevant content for google anylytic
 <br />
 <br />
 
-# actual TODOs
 
-- [ ] bugfix glyph shift
-- [ ] 
 
 
