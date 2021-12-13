@@ -18,9 +18,9 @@ to prevent anyone to scrape content from your obfuscated html output.
 
 ## _IMPORTANT NOTE_
 
-Bots are not longer able to process obfuscated texts or it comes to unpredictable analytics results etc. 
+Bots are not longer able to process obfuscated text or it comes to unpredictable analytics results etc. 
 <br>
-So please beware of using this technique on relevant content for google anylytics or similar technologies!
+So please beware of using this technique on relevant content for indexed pages!
 
 <br />
 <br />
