@@ -1,19 +1,27 @@
-import obfuscation from "../src/index";
-
-jest.setTimeout(20000);
+import translate from "../src/translate";
 
 describe("font obfuscation", () => {
-  it("should generate translation", async () => {
-    const result = await obfuscation({
-      fontFile: "examples/example.ttf",
-      numKeys: 1,
-    });
 
-    const res = result[0]
+  it('should render example', async () => {
 
-    expect(res.key).not.toBeNull();
-    expect(res.font).not.toBeNull();
-    expect(res.fontName).toHaveLength(7);
+    const object = {
+      some: "string",
+      to: "obfuscate"
+    }
 
-  });
+    const original = { ...object }
+
+    const style = await translate(object, 'example/example.ttf')
+
+    expect(style).toContain('noscrape-obfuscated')
+
+    expect(object).not.toBeNull()
+    expect(object.some).not.toBeNull()
+    expect(object.to).not.toBeNull()
+
+    expect(object.some).not.toEqual(original.some)
+    expect(object.to).not.toEqual(original.to)
+
+  })
+
 });
