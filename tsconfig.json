@@ -11,9 +11,10 @@
       "emitDecoratorMetadata": true,
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
-      "moduleResolution": "node",
-      "paths": { "src": [
-          "./src"
-      ] }
-    }
+      
+    },
+    "exclude": [
+      "node_modules",
+      "test"
+    ]
   }
