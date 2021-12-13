@@ -25,8 +25,48 @@ So please beware of using this technique on relevant content for indexed pages!
 <br />
 <br />
 <br />
+
+## Usage
+
+```typescript
+const object = { some: "strings", to: "translate" }
+
+const css = translate(object, 'path/to/your/font.ttf')
+```
+
+translate will obfuscate all string values within given object and return a little css code like that:
+```css
+@font-face {       
+    font-family: 'noscrape-obfuscated';       
+    src: url('data:font/truetype;charset=utf-8;base64,T1RUTwAJAIAAAwAQQ0ZGIOr...');    
+}
+```
+
+the css - code have to be inserted in your html within a `<style />` - tag
+
+and all you have to do now is insert the obfuscated objects values within a tag that uses `noscrape-obfuscated` as font-family
+
+<br />
+<br />
 <br />
 
+## Example
 
+```typescript
 
+const object = { some: "strings", to: "translate" }
 
+const css = translate(object, 'path/to/your/font.ttf')
+
+```
+...
+```html
+<style> { css } </style>
+```
+...
+```html
+
+<span style="font-family: noscrape-obfuscated">
+    { object.some}
+</span>    
+```
