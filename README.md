@@ -82,4 +82,4 @@ const b64 = font.toString(`base64`)
 ### **strategy** _(todo)_
 
 -  **onthefly**  _render during the request_
--  **prerender** _render full font asyncrounously and provide via url_
+-  **prerender** _render full font asynchronous and provide via url_
