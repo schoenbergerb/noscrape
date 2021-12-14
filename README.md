@@ -53,21 +53,20 @@ and all you have to do now is insert the obfuscated objects values within a tag 
 ## Example
 
 ```typescript
-
-const object = { some: "strings", to: "translate" }
-
+// server-side obfuscation
+const object = { title: "noscrape", text: "obfuscation" }
 const css = translate(object, 'path/to/your/font.ttf')
 
 ```
-...
+⬇⬇⬇⬇ provide data ⬇⬇⬇⬇
 ```html
+<!-- client-side visualization-->
 <style> { css } </style>
-```
+
 ...
-```html
 
 <span style="font-family: noscrape-obfuscated">
-    { object.some}
+    { object.title}
 </span>    
 ```
 
@@ -75,13 +74,22 @@ const css = translate(object, 'path/to/your/font.ttf')
 <br />
 <br />
 
-## Properties
+# Options
 
 <br />
 
-#### **strength** ( default: *1* )
+#### **strength**
      * obfuscation strength multiplier ( default: 1 )
-     * all under 0.1 makes no sense ( paths can simply be rounded and so back calculated )
+     * all under 0.1 makes no sense ( paths can be simply back calculated )
      * all over 10 makes no sense ( looks like 💩 )
 
-<img src="./docs/obfuscation-strength.jpg">
+<img src="./docs/obfuscationstrength.jpg">
+
+<br />
+<br />
+<br />
+
+#### **strategy** _(todo)_
+
+-  onthefly  _render during the request_
+-  prerender _render full font asyncrounously and provide via url_
