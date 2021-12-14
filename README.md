@@ -70,3 +70,18 @@ const css = translate(object, 'path/to/your/font.ttf')
     { object.some}
 </span>    
 ```
+
+<br />
+<br />
+<br />
+
+## Properties
+
+<br />
+
+#### **strength** ( default: *1* )
+     * obfuscation strength multiplier ( default: 1 )
+     * all under 0.1 makes no sense ( paths can simply be rounded and so back calculated )
+     * all over 10 makes no sense ( looks like 💩 )
+
+<img src="./docs/obfuscation-strength.jpg">

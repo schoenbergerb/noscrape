@@ -5,8 +5,8 @@ describe("font obfuscation", () => {
   it('should render example', async () => {
 
     const object = {
-      some: "string",
-      to: "obfuscate"
+      some: "noscrape",
+      to: "obfuscated"
     }
 
     const original = { ...object }

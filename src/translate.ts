@@ -1,20 +1,18 @@
 
 import _ from 'lodash'
 import { load, Glyph, Font } from "opentype.js";
+import { ObfuscationOptions } from './obfuscation-options';
 
 // glyph names starting from e001 (hex)
 const GLYPHINDEXSTART = 57345
 
-interface ObfuscationResult {
-
-}
 
 /**
  * @param value object which will be translated
  * @param fontFilePath 
  * @returns font-family string
  */
-export default async function translate<T>(value: T, fontFilePath: string): Promise<string> {
+export default async function translate<T>(value: T, fontFilePath: string, options?: ObfuscationOptions): Promise<string> {
 
     const charArray = Object.values(value).filter(s => typeof s === 'string').map(s => s.split(''))
 
@@ -31,11 +29,27 @@ export default async function translate<T>(value: T, fontFilePath: string): Prom
 
         translation.set(glyph.unicode, unicode)
 
+        const commands = glyph.path.commands.map(cmd => {
+
+            if (!cmd.x || !cmd.y) {
+                return cmd
+            }
+
+            return {
+                ...cmd,
+                x: cmd.x + Math.random() * (options?.strength ?? 1),
+                y: cmd.y + Math.random() * (options?.strength ?? 1),
+            }            
+        })
+
         return new Glyph({
             index,
             name: Number(unicode).toString(16),
             unicode,
-            path: glyph.path,
+            path: {
+                ...glyph.path,
+                commands
+            },
             advanceWidth: glyph.advanceWidth,
         })
     })
