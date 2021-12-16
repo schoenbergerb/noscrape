@@ -1,6 +1,6 @@
 {
   "name": "@noscrape/noscrape",
-  "version": "1.0.2",
+  "version": "0.1.0",
   "description": "protect your content from scraping",
   "main": "dist/index.js",
   "scripts": {
