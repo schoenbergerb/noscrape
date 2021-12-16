@@ -9,8 +9,7 @@
 
 ## project goal
 
-this projects goal is to provide an infrastructure to create an obfuscated font (public-key) and a lookup json (private key) 
-to prevent anyone to scrape content from your html output.
+this projects goal is to prevent anyone to scrape content from your html output.
 
 <br />
 <br />
@@ -74,12 +73,3 @@ const b64 = font.toString(`base64`)
      * all over 10 makes no sense ( looks like 💩 )
 
 <img src="./docs/obfuscationstrength.jpg">
-
-<br />
-<br />
-<br />
-
-### **strategy** _(todo)_
-
--  **onthefly**  _render during the request_
--  **prerender** _render full font asynchronous and provide via url_
