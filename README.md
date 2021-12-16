@@ -73,3 +73,20 @@ const b64 = font.toString(`base64`)
      * all over 10 makes no sense ( looks like 💩 )
 
 <img src="./docs/obfuscationstrength.jpg">
+
+
+<br />
+<br />
+<br />
+
+## Contributions
+
+Contributions, issues and feature requests are very welcome. If you are using this package and fixed a bug for yourself, please consider submitting a PR!
+
+<br />
+<br />
+<br />
+
+## License
+
+[MIT](https://github.com/schoenbergerb/noscrape/blob/main/LICENSE) @ Bernhard Schönberger

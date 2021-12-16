@@ -1,6 +1,6 @@
 {
   "name": "@noscrape/noscrape",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "protect your content from scraping",
   "main": "dist/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "Bernhard Schönberger",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/schoenbergerb/noscrape"
