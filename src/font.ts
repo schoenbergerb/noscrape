@@ -1,7 +1,6 @@
 import { Font } from "opentype.js";
 
 export default function generateObfuscatedFont(font, glyphs, translation) {
-
     const newFont = new Font({
         familyName: "noscrape",
         styleName: "obfuscated",
@@ -16,8 +15,6 @@ export default function generateObfuscatedFont(font, glyphs, translation) {
         newFont.names = font.names
     }
 
-    const arraybuffer = newFont.toArrayBuffer();
-
-    return Buffer.from(arraybuffer)
+    return Buffer.from( newFont.toArrayBuffer() )
 }
 
