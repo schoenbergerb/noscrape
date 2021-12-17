@@ -1,7 +1,8 @@
 {
   "name": "@noscrape/noscrape",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "protect your content from scraping",
+  "homepage": "https://noscrape-nexample.vercel.app",
   "main": "dist/index.js",
   "scripts": {
     "run": "ts-node main.ts",
