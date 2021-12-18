@@ -1,23 +1,24 @@
-
-## noscrape  _ALPHA_
 <img src="./docs/preview.png">
 
 
 <br />
 <br />
 
-
-## project goal
-
-this projects goal is to prevent anyone to scrape content from your html output.
+this projects goal is to prevent anyone to scrape content from your html output
 
 <br />
+<br />
+
+[example-code](https://github.com/schoenbergerb/noscrape-nexample) 
+
+[live demo](https://noscrape-nexample.vercel.app) 
+
 <br />
 <br />
 
 ## _IMPORTANT NOTE_
 
-Bots are not longer able to process obfuscated text or it comes to unpredictable analytics results etc. 
+Bots are not able to process obfuscated text or it comes to unpredictable analytics results etc. 
 <br>
 So please beware of using this technology on relevant content for indexed pages!
 
