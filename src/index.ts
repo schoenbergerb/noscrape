@@ -1,3 +1,3 @@
-import obfuscate from "./obfuscate"
+import obfuscate from "./obfuscate";
 
-export default obfuscate
+export default obfuscate;
