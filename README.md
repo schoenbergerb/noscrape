@@ -75,6 +75,20 @@ const b64 = font.toString(`base64`)
 
 <img src="./docs/obfuscationstrength.jpg">
 
+<br />
+<br />
+
+### **characterRange**
+character range used for encryption
+
+
+- DEFAULT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _Private Use Area_
+- LATIN
+- GREEK
+- CYRILLIC
+- HEBREW
+- HIRAGANA
+- KATAKANA
 
 <br />
 <br />
