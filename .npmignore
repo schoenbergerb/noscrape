@@ -1,0 +1,9 @@
+.git*
+src/
+example/
+docs/
+test/
+
+
+*config.js
+*.html
