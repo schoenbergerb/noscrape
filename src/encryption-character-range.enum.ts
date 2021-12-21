@@ -15,8 +15,8 @@ export enum EncryptionCharakterRange {
   /* 0590	- 05FF	Hebrew */
   HEBREW = 1424,
 
-  /* E000 - F8FF  Private Use Area */
-  DEFAULT = 57344,
+  /* E000 - F8FF  Private Use Area - DEFAULT */
+  PRIVATE_USE_AREA = 57344,
 
   /* 3040 - 309F  Hiragana */
   HIRAGANA = 12352,
