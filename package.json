@@ -1,6 +1,6 @@
 {
   "name": "@noscrape/noscrape",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "protect your content from scraping",
   "homepage": "https://noscrape-nexample.vercel.app",
   "keywords": ["scraping", "noscrape", "crawler", "websecurity", "scrape", "obfuscation", "obfuscate", "defend", "protection"],
@@ -8,7 +8,8 @@
   "scripts": {
     "run": "ts-node main.ts",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "demo": "ts-node example/demo.ts"
   },
   "author": "Bernhard Schönberger",
   "license": "MIT",
