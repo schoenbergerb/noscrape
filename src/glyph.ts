@@ -9,7 +9,7 @@ export default function obfuscateGlyphs(
   const translation = new Map<number, number>();
 
   const startFromUnicode =
-    options?.characterRange ?? EncryptionCharakterRange.DEFAULT;
+    options?.characterRange ?? EncryptionCharakterRange.PRIVATE_USE_AREA;
 
   const glyphs = originalGlyphs.map((glyph, index) => {
     const unicode = index + startFromUnicode;
@@ -37,6 +37,7 @@ export default function obfuscateGlyphs(
         commands,
       },
       advanceWidth: glyph.advanceWidth,
+      leftSideBearing: glyph.leftSideBearing,
     });
   });
 
