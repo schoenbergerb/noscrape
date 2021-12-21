@@ -21,5 +21,11 @@ export default function value2glyphs<T>(value: T, font: Font): Glyph[] {
 
   const uniqChars = _.union(chars);
 
-  return font.stringToGlyphs(_.shuffle(uniqChars).join(""));
+  const glyphs =  font.stringToGlyphs(_.shuffle(uniqChars).join(""));
+
+  const notDefGlyph = font.glyphs.glyphs[0]
+
+  glyphs.unshift(notDefGlyph)
+
+  return glyphs
 }
