@@ -2,7 +2,7 @@
  * Unicode Ranges to use for encryption
  * @see https://www.ling.upenn.edu/courses/Spring_2003/ling538/UnicodeRanges.html
  */
-export enum EncryptionCharakterRange {
+export enum EncryptionCharacterRange {
   /* 0000 - 007F  Basic Latin */
   LATIN = 33,
 

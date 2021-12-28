@@ -1,5 +1,5 @@
 import { Glyph } from "opentype.js";
-import { EncryptionCharakterRange } from "./encryption-character-range.enum";
+import { EncryptionCharacterRange } from "./encryption-character-range.enum";
 import { ObfuscationOptions } from "./obfuscation-options";
 
 export default function obfuscateGlyphs(
@@ -9,7 +9,7 @@ export default function obfuscateGlyphs(
   const translation = new Map<number, number>();
 
   const startFromUnicode =
-    options?.characterRange ?? EncryptionCharakterRange.PRIVATE_USE_AREA;
+    options?.characterRange ?? EncryptionCharacterRange.PRIVATE_USE_AREA;
 
   const glyphs = originalGlyphs.map((glyph, index) => {
     const unicode = index + startFromUnicode;

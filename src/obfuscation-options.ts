@@ -1,4 +1,4 @@
-import { EncryptionCharakterRange } from "./encryption-character-range.enum";
+import { EncryptionCharacterRange } from "./encryption-character-range.enum";
 
 export interface ObfuscationOptions {
   /**
@@ -8,5 +8,5 @@ export interface ObfuscationOptions {
    */
   strength?: number;
 
-  characterRange?: EncryptionCharakterRange;
+  characterRange?: EncryptionCharacterRange;
 }
