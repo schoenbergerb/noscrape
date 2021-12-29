@@ -4,31 +4,39 @@
 <br />
 <br />
 
-this projects goal is to prevent anyone to scrape content from your html output
+# Project Goal 
+
+### this project should help you to prevent anyone from scraping your content
 
 <br />
 <br />
+<br />
 
-[example-code](https://github.com/schoenbergerb/noscrape-nexample) 
+# Concept
+The key behind is to use any true-type font as basis, shuffle glyphs (unicodes) and remove everthing from inside that makes it possible to calculate the original unicode and generate a new obfuscation-font from that. Translate given strings/objects by using the new _shuffled_ unicodes. <br />On client-side, users are able to read everything well if obfuscated values are rendered with our new calculated font but for any scraper it should only be a great confusion.
+<br /><br />
+What we cannot remove are the glyph - paths. At the moment the paths are obfuscated by shifting them randomly a little bit _( @see [obfuscation strength multiplier](#strength) )_ that makes it hard to calculate them back but not impossible or maybe "guessable" by a ML-Algorithm.<br /> Would be nice if someone come up with a better solution or help to improve this 😅
 
-[live demo](https://noscrape-nexample.vercel.app) 
 
 <br />
 <br />
+<br />
 
-## _IMPORTANT NOTE_
+# _IMPORTANT NOTE_
 
 Bots are not able to process obfuscated text or it comes to unpredictable analytics results etc. 
 <br>
 So please beware of using this technology on relevant content for indexed pages!
-
+<br />
+<br />
+Doing the whole obfuscation stuff tooks time (something about 50-60ms).<br>
+This should not be problem with prerendered pages. For API-Requests, one sould consider putting obfuscation logic into a cronjob like task and use them multiple times instead of calculate everything again for every request.
 <br />
 <br />
 <br />
 
 
-
-## Example
+# Example
 
 ```typescript
 // server-side obfuscation
@@ -61,6 +69,11 @@ const b64 = font.toString(`base64`)
 ```
 
 <br />
+
+[example-code](https://github.com/schoenbergerb/noscrape-nexample) 
+
+[live demo](https://noscrape-nexample.vercel.app) 
+<br />
 <br />
 <br />
 
@@ -68,7 +81,7 @@ const b64 = font.toString(`base64`)
 
 <br />
 
-### **strength**
+## strength
      * obfuscation strength multiplier ( default: 1 )
      * all under 0.1 makes no sense ( paths can be simply back calculated )
      * all over 10 makes no sense ( looks like 💩 )
@@ -78,7 +91,7 @@ const b64 = font.toString(`base64`)
 <br />
 <br />
 
-### **characterRange**
+### characterRange
 character range used for encryption
 
 
@@ -93,7 +106,7 @@ character range used for encryption
 <br />
 <br />
 
-## Contributions
+# Contributions
 
 Contributions, issues and feature requests are very welcome. If you are using this package and fixed a bug for yourself, please consider submitting a PR!
 
@@ -101,6 +114,6 @@ Contributions, issues and feature requests are very welcome. If you are using th
 <br />
 <br />
 
-## License
+# License
 
 [MIT](https://github.com/schoenbergerb/noscrape/blob/main/LICENSE) @ Bernhard Schönberger
