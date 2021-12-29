@@ -86,7 +86,6 @@ character range used for encryption
 - LATIN
 - GREEK
 - CYRILLIC
-- HEBREW
 - HIRAGANA
 - KATAKANA
 
