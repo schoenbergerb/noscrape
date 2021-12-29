@@ -82,7 +82,7 @@ const b64 = font.toString(`base64`)
 character range used for encryption
 
 
-- DEFAULT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _Private Use Area_
+- PRIVATE_USE_AREA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ___DEFAULT___
 - LATIN
 - GREEK
 - CYRILLIC
