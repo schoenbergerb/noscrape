@@ -1,11 +1,11 @@
 import obfuscate from '../src'
-import { EncryptionCharakterRange } from '../src/encryption-character-range.enum'
+import { EncryptionCharacterRange } from '../src/encryption-character-range.enum'
 import fs from 'fs'
 
 obfuscate(
-    { data: "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!§$%&/()=?¬”#£ﬁ^``-,.-M:;_,,;#+#+äölü"}, 
+    { data: "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!§$%&/()=?¬”#£ﬁ^``-,.-M:;_,,;#+#+äöü"}, 
     __dirname + "/example.ttf",
-    { characterRange: EncryptionCharakterRange.KATAKANA }
+    { characterRange: EncryptionCharacterRange.KATAKANA }
 ).then(({value, font}) => {
     fs.writeFileSync('./example.html', `
         <html>

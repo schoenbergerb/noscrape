@@ -1,4 +1,4 @@
-import { EncryptionCharakterRange } from '../src/encryption-character-range.enum';
+import { EncryptionCharacterRange } from '../src/encryption-character-range.enum';
 import obfuscate from '../src/obfuscate'
 
 const demoObject = {
@@ -38,9 +38,9 @@ describe("font obfuscation", () => {
 
   it("should render all unicode ranges", async () => {
 
-    const ranges = Object.keys(EncryptionCharakterRange)
+    const ranges = Object.keys(EncryptionCharacterRange)
 
-    for (const val in EncryptionCharakterRange) {
+    for (const val in EncryptionCharacterRange) {
 
       const characterRange = Number(val)
 
