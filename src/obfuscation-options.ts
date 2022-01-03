@@ -1,7 +1,6 @@
 import { EncryptionCharacterRange } from ".";
 
 export interface ObfuscationOptions {
-
   /**
    * obfuscation strength multiplier ( default: 1 )
    * all under 0.1 makes no sense ( can simply be rounded and so back calculated )
@@ -13,5 +12,4 @@ export interface ObfuscationOptions {
    *  the character-range to pick obfuscation glyphs from
    */
   characterRange?: EncryptionCharacterRange;
-
 }

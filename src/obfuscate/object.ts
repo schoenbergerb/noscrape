@@ -5,7 +5,7 @@ import obfuscateString from "./string";
 export default function obfuscateObject<T>(
   value: T,
   translation: Map<number, number>
-): T  {
+): T {
   const obj = _.clone(value);
 
   Object.keys(obj).map((key) => {

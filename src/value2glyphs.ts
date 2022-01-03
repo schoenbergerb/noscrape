@@ -1,12 +1,9 @@
 import _ from "lodash";
 import { Font, Glyph } from "opentype.js";
 
-
-
 const values = (object) => {
-
-  if (typeof object === 'number') {
-    object = `${object}`
+  if (typeof object === "number") {
+    object = `${object}`;
   }
 
   return _.flatten(
@@ -28,11 +25,11 @@ export default function value2glyphs<T>(value: T, font: Font): Glyph[] {
 
   const uniqChars = _.union(chars);
 
-  const glyphs =  font.stringToGlyphs(_.shuffle(uniqChars).join(""));
+  const glyphs = font.stringToGlyphs(_.shuffle(uniqChars).join(""));
 
-  const notDefGlyph = font.glyphs.glyphs[0]
+  const notDefGlyph = font.glyphs.glyphs[0];
 
-  glyphs.unshift(notDefGlyph)
+  glyphs.unshift(notDefGlyph);
 
-  return glyphs
+  return glyphs;
 }
