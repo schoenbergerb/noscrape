@@ -4,6 +4,13 @@
 <br />
 <br />
 
+[![GitHub release](https://img.shields.io/github/release/schoenbergerb/noscrape?include_prereleases=&sort=semver&color=blue)](https://github.com/schoenbergerb/noscrape/releases/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+[![issues - noscrape](https://img.shields.io/github/issues/schoenbergerb/noscrape)](https://github.com/schoenbergerb/noscrape/issues)
+
+<br />
+<br />
+
 # Project Goal 
 
 ### this project should help you to prevent anyone from scraping your content
@@ -41,7 +48,7 @@ This should not be problem with prerendered pages. For API-Requests, one sould c
 ```typescript
 // server-side obfuscation
 const object = { title: "noscrape", text: "obfuscation" }
-const { font, value }  = obfuscate(object, 'path/to/your/font.ttf')
+const { font, value }  = obfuscate<any>(object, 'path/to/your/font.ttf')
 
 ```
 ⬇⬇⬇⬇ provide data ⬇⬇⬇⬇
