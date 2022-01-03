@@ -3,7 +3,7 @@ import { ObfuscationOptions } from "./obfuscation-options";
 import obfuscateGlyphs from "./glyph";
 import generateObfuscatedFont from "./font";
 import value2glyphs from "./value2glyphs";
-import obfuscateObject from "./obfuscate-object";
+import obfuscateValue from "./obfuscate/value";
 
 /**
  * @param value object which will be translated
@@ -21,9 +21,9 @@ export default async function obfuscate<T>(
 
   const { translation, glyphs } = obfuscateGlyphs(originalGlyphs, options);
 
-  const buffer = generateObfuscatedFont(font, glyphs, translation);
+  const buffer = generateObfuscatedFont(font, glyphs);
 
-  const obj = obfuscateObject(value, translation);
+  const obj = obfuscateValue(value, translation);
 
   return {
     value: obj,

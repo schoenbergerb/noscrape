@@ -12,7 +12,29 @@ const demoObject = {
 
 describe("font obfuscation", () => {
 
-  it('should render example', async () => {
+
+  it("should obfuscate simple number", async () => {
+
+    const number = 1234567890
+  
+    const { font, value } = await obfuscate(number, 'example/example.ttf')
+    
+    expect(`${value}`).not.toBeNull()
+    expect(`${value}`).not.toBe(number)
+  })
+  
+  it("should obfuscate simple string", async () => {
+  
+    const simpleString = "noscrape"
+  
+    const { value } = await obfuscate(simpleString, 'example/example.ttf')
+  
+    expect(value).not.toBeNull()
+    expect(value).not.toBe(simpleString)
+
+  })
+
+  it('should obfuscate object', async () => {
 
     const object = {
       string: "noscrape",
@@ -22,7 +44,7 @@ describe("font obfuscation", () => {
       }
     }
 
-    const { font, value } = await obfuscate(object, 'example/example.ttf', {
+    const { font, value } = await obfuscate<any>(object, 'example/example.ttf', {
       strength: 5
     })
 
@@ -47,7 +69,7 @@ describe("font obfuscation", () => {
         continue
       }
 
-      const { font, value } = await obfuscate(demoObject, 'example/example.ttf', {
+      const { value } = await obfuscate<any>(demoObject, 'example/example.ttf', {
         characterRange
       })
 
@@ -57,5 +79,9 @@ describe("font obfuscation", () => {
     }
   })
 
+  it ("should match font size", async () => {
+    const { font } = await obfuscate(0, 'example/example.ttf')
+    expect(font.byteLength).toBe(1996)
+  })
 
 });
