@@ -1,20 +1,23 @@
 import _ from "lodash";
-import obfuscateString from "./obfuscate-string";
+import obfuscateNumber from "./number";
+import obfuscateString from "./string";
 
 export default function obfuscateObject<T>(
   value: T,
   translation: Map<number, number>
-): T {
+): T  {
   const obj = _.clone(value);
 
   Object.keys(obj).map((key) => {
     switch (typeof obj[key]) {
       case "number":
+        obj[key] = obfuscateNumber(value[key], translation);
+        break;
       case "string":
-        obj[key] = obfuscateString(`${obj[key]}`, translation);
+        obj[key] = obfuscateString(value[key], translation);
         break;
       case "object":
-        obj[key] = obfuscateObject(obj[key], translation);
+        obj[key] = obfuscateObject(value[key], translation);
         break;
       default:
         break;

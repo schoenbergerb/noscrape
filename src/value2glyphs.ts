@@ -1,7 +1,14 @@
 import _ from "lodash";
 import { Font, Glyph } from "opentype.js";
 
+
+
 const values = (object) => {
+
+  if (typeof object === 'number') {
+    object = `${object}`
+  }
+
   return _.flatten(
     _.values(object).map((v) => {
       switch (typeof v) {
