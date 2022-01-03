@@ -15,8 +15,8 @@ describe("font obfuscation", () => {
   it('should render example', async () => {
 
     const object = {
-      some: "noscrape",
-      to: "obfuscated",
+      string: "noscrape",
+      integer: 1234567890,
       deep: {
         nested: demoObject
       }
@@ -30,11 +30,10 @@ describe("font obfuscation", () => {
     expect(value).not.toBeNull()
     expect(value.deep.nested.a).not.toBeNull()
 
-    expect(value.some).not.toEqual(object.some)
-    expect(value.to).not.toEqual(object.to)
+    expect(value.string).not.toEqual(object.string)
+    expect(value.integer).not.toEqual(object.integer)
 
   })
-
 
   it("should render all unicode ranges", async () => {
 
@@ -57,4 +56,6 @@ describe("font obfuscation", () => {
 
     }
   })
+
+
 });

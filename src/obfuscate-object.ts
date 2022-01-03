@@ -9,8 +9,9 @@ export default function obfuscateObject<T>(
 
   Object.keys(obj).map((key) => {
     switch (typeof obj[key]) {
+      case "number":
       case "string":
-        obj[key] = obfuscateString(obj[key], translation);
+        obj[key] = obfuscateString(`${obj[key]}`, translation);
         break;
       case "object":
         obj[key] = obfuscateObject(obj[key], translation);
