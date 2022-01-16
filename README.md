@@ -20,7 +20,7 @@
 <br />
 
 # Concept
-The key behind is to use any true-type font as basis, shuffle glyphs (unicodes) and remove everthing from inside that makes it possible to calculate the original unicode and generate a new obfuscation-font from that. Translate given strings/objects by using the new _shuffled_ unicodes. <br />On client-side, users are able to read everything well if obfuscated values are rendered with our new calculated font. For any scraper it should only be a great confusion.
+The key behind is to use any true-type font as basis, shuffle glyphs (unicodes), remove everthing from inside that makes it possible to calculate the original unicodes and generate a new "obfuscated" font from that. Translate given strings/objects by using the new _shuffled_ unicodes. <br />On client-side, users are able to read everything well if obfuscated values are rendered with our new calculated font. For any scraper it should only be a great confusion.
 <br /><br />
 What we cannot remove are the glyph - paths. At the moment the paths are obfuscated by shifting them randomly a little bit _( @see [obfuscation strength multiplier](#strength) )_ that makes it hard to calculate them back but not impossible or maybe "guessable" by a ML-Algorithm.<br /> Would be nice if someone come up with a better solution or help to improve this 😅
 
