@@ -16,7 +16,7 @@
     },
     "exclude": [
       "node_modules",
-      "test",
-      "example"
+      "example",
+      "test"
     ]
   }

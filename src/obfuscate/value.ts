@@ -1,9 +1,8 @@
-import _ from "lodash";
-import obfuscateNumber from "./number";
-import obfuscateObject from "./object";
-import obfuscateString from "./string";
+import { obfuscateNumber } from "./number";
+import { obfuscateObject } from "./object";
+import { obfuscateString } from "./string";
 
-export default function obfuscateValue<T>(
+export function obfuscateValue<T>(
   value: T | string | number,
   translation: Map<number, number>
 ): T | string | number {
@@ -15,6 +14,6 @@ export default function obfuscateValue<T>(
     case "object":
       return obfuscateObject(value, translation);
     default:
-      throw new Error(typeof value + " could not be obfuscated");
+      throw new Error(`${typeof value} could not be obfuscated`);
   }
 }

@@ -2,7 +2,7 @@ import { Glyph } from "opentype.js";
 import { EncryptionCharacterRange } from "./encryption-character-range.enum";
 import { ObfuscationOptions } from "./obfuscation-options";
 
-export default function obfuscateGlyphs(
+export function obfuscateGlyphs(
   originalGlyphs: Glyph[],
   options?: ObfuscationOptions
 ) {
