@@ -1,5 +1,4 @@
-import { EncryptionCharacterRange } from '../src/encryption-character-range.enum';
-import obfuscate from '../src/obfuscate'
+import { obfuscate, EncryptionCharacterRange } from '../src'
 
 const demoObject = {
   a: "abcdefghijklmnopqrstuvwxyz",

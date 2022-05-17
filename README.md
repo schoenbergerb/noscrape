@@ -1,15 +1,19 @@
+
 <img src="./docs/preview.png">
-
-
 <br />
 <br />
 
 [![GitHub release](https://img.shields.io/github/release/schoenbergerb/noscrape?include_prereleases=&sort=semver&color=blue)](https://github.com/schoenbergerb/noscrape/releases/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
 [![issues - noscrape](https://img.shields.io/github/issues/schoenbergerb/noscrape)](https://github.com/schoenbergerb/noscrape/issues)
+![Known Vulnerabilities](https://snyk.io/test/github/schoenbergerb/noscrape/badge.svg)
+![CodeQL](https://github.com/schoenbergerb/noscrape/workflows/CodeQL/badge.svg)
+
+
 
 <br />
 <br />
+
 
 # Project Goal 
 

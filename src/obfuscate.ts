@@ -1,16 +1,16 @@
 import { load } from "opentype.js";
 import { ObfuscationOptions } from "./obfuscation-options";
-import obfuscateGlyphs from "./glyph";
-import generateObfuscatedFont from "./font";
+import { obfuscateGlyphs } from "./glyph";
+import { generateObfuscatedFont } from "./font";
 import value2glyphs from "./value2glyphs";
-import obfuscateValue from "./obfuscate/value";
+import { obfuscateValue } from "./obfuscate/value";
 
 /**
  * @param value object which will be translated
  * @param fontFilePath
  * @returns font-family string
  */
-export default async function obfuscate<T>(
+export async function obfuscate<T>(
   value: T,
   fontFilePath: string,
   options?: ObfuscationOptions
