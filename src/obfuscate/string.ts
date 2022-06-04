@@ -1,4 +1,4 @@
-export function obfuscateString(str: string, translation) {
+export function obfuscateString(str: string, translation): string {
   const codes: number[] = str.split("").map((c) => {
     const code = c.charCodeAt(0);
     return translation.get(code) ?? 0;

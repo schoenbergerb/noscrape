@@ -2,10 +2,15 @@ import { Glyph } from "opentype.js";
 import { EncryptionCharacterRange } from "./encryption-character-range.enum";
 import { ObfuscationOptions } from "./obfuscation-options";
 
+type GlyphObfuscationResult = {
+  translation: Map<number, number>,
+  glyphs: Glyph[],
+}
+
 export function obfuscateGlyphs(
   originalGlyphs: Glyph[],
   options?: ObfuscationOptions
-) {
+): GlyphObfuscationResult {
   const translation = new Map<number, number>();
 
   const startFromUnicode =

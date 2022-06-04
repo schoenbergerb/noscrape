@@ -2,7 +2,7 @@ import { clone } from "lodash";
 import { obfuscateNumber } from "./number";
 import { obfuscateString } from "./string";
 
-export function obfuscateObject<T>(
+export function obfuscateObject<T extends object>(
   value: T,
   translation: Map<number, number>
 ): T {
