@@ -80,7 +80,7 @@ describe("font obfuscation", () => {
 
   it ("should match font size", async () => {
     const { font } = await obfuscate(0, 'example/example.ttf')
-    expect(font.byteLength).toBe(1996)
+    expect(font.byteLength).toBe(1924)
   })
 
 });
