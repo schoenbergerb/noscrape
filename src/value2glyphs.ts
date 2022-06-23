@@ -27,7 +27,7 @@ export default function value2glyphs<T>(value: T, font: Font): Glyph[] {
 
   const glyphs = font.stringToGlyphs(_.shuffle(uniqChars).join(""));
 
-  const notDefGlyph = font.glyphs.glyphs[0];
+  const notDefGlyph = font.glyphs.get(0);
 
   glyphs.unshift(notDefGlyph);
 
