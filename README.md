@@ -24,7 +24,7 @@
 <br />
 
 # Concept
-The key behind is to use any true-type font from which _noscrape_ generates a new version with shuffeld unicodes and nothing what one can use to calculate them back. Strings and Integers become obfuscated and are only readable by using the generated obfuscation-font.
+The key behind is to use any true-type font, from which _noscrape_ generates a new version with shuffled unicodes and nothing what one can use to calculate them back. Strings and Integers become obfuscated and are only readable by using the generated obfuscation-font.
 
 <br /><br />
 What we cannot remove from inside the font are the glyph-paths. At the moment the paths are obfuscated by shifting them randomly a little bit _( @see [obfuscation strength multiplier](#strength) )_ that makes it hard to calculate them back but not impossible or maybe "guessable" by a ML-Algorithm.<br /> Would be nice if someone come up with a better solution or help to improve this 😅
