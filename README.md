@@ -82,7 +82,7 @@ const b64 = font.toString(`base64`)
 
 <br />
 
-[example-code](https://github.com/schoenbergerb/noscrape-nexample) 
+[example-code](https://github.com/schoenbergerb/noscrape-example) 
 
 [live demo](https://noscrape-nexample.vercel.app) 
 <br />
