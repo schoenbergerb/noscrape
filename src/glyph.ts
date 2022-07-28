@@ -1,6 +1,5 @@
-import { Glyph } from "opentype.js";
+import { Glyph, Path } from "opentype.js";
 import { EncryptionCharacterRange } from "./encryption-character-range.enum";
-import { ObfuscationOptions } from "./obfuscation-options";
 
 type GlyphObfuscationResult = {
   translation: Map<number, number>,
@@ -8,7 +7,7 @@ type GlyphObfuscationResult = {
 }
 
 export function obfuscateGlyphs(
-  originalGlyphs: Glyph[],
+  originalGlyphs: (Glyph & { path: Path })[],
   characterRange: EncryptionCharacterRange, 
   strength: number
 ): GlyphObfuscationResult {
@@ -19,7 +18,7 @@ export function obfuscateGlyphs(
 
     translation.set(glyph.unicode, unicode);
 
-    const commands = glyph.path.commands.map((cmd) => {
+    const commands = glyph.path.commands.map((cmd: any) => {
       if (!cmd.x || !cmd.y) {
         return cmd;
       }
@@ -31,16 +30,15 @@ export function obfuscateGlyphs(
       };
     });
 
+    const { path } = glyph
+    path.commands = commands;
+
     return new Glyph({
       index,
       name: Number(unicode).toString(16),
       unicode,
-      path: {
-        ...glyph.path,
-        commands,
-      },
+      path,
       advanceWidth: glyph.advanceWidth,
-      leftSideBearing: glyph.leftSideBearing,
     });
   });
 
