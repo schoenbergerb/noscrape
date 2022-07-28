@@ -9,15 +9,13 @@ type GlyphObfuscationResult = {
 
 export function obfuscateGlyphs(
   originalGlyphs: Glyph[],
-  options?: ObfuscationOptions
+  characterRange: EncryptionCharacterRange, 
+  strength: number
 ): GlyphObfuscationResult {
   const translation = new Map<number, number>();
 
-  const startFromUnicode =
-    options?.characterRange ?? EncryptionCharacterRange.PRIVATE_USE_AREA;
-
   const glyphs = originalGlyphs.map((glyph, index) => {
-    const unicode = index + startFromUnicode;
+    const unicode = index + characterRange;
 
     translation.set(glyph.unicode, unicode);
 
@@ -28,8 +26,8 @@ export function obfuscateGlyphs(
 
       return {
         ...cmd,
-        x: cmd.x + Math.random() * (options?.strength ?? 1),
-        y: cmd.y + Math.random() * (options?.strength ?? 1),
+        x: cmd.x + Math.random() * strength,
+        y: cmd.y + Math.random() * strength,
       };
     });
 

@@ -43,7 +43,7 @@ describe("font obfuscation", () => {
       }
     }
 
-    const { font, value } = await obfuscate<any>(object, 'example/example.ttf', {
+    const { font, value } = await obfuscate(object, 'example/example.ttf', {
       strength: 5
     })
 
