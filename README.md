@@ -24,7 +24,7 @@
 <br />
 
 # Concept
-The key behind is to use any true-type font from which _noscrape_ generates a new version with shuffeld unicodes and nothing what one can use to calculate them back. Strings and Integers become obfuscated and are only readable by using the generated obfuscation-font.
+The key behind is to use any true-type font from which _noscrape_ generates a new version with shuffled unicodes and nothing what one can use to calculate them back. Strings and Integers become obfuscated and are only readable by using the generated obfuscation-font.
 
 <br /><br />
 What we cannot remove from inside the font are the glyph-paths. At the moment the paths are obfuscated by shifting them randomly a little bit _( @see [obfuscation strength multiplier](#strength) )_ that makes it hard to calculate them back but not impossible or maybe "guessable" by a ML-Algorithm.<br /> Would be nice if someone come up with a better solution or help to improve this 😅
@@ -53,10 +53,13 @@ This should not be problem with prerendered pages. For API-Requests, one sould c
 ```typescript
 // server-side obfuscation
 const object = { title: "noscrape", text: "obfuscation" }
-const { font, value }  = obfuscate<any>(object, 'path/to/your/font.ttf')
+const { font, value }  = obfuscate(object, 'path/to/your/font.ttf')
 
 ```
-⬇⬇⬇⬇ provide data ⬇⬇⬇⬇
+<br />
+<p style="text-align: center">⬇⬇⬇⬇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;provide data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬇⬇⬇⬇</p>
+<br />
+
 ```javascript
 // font will be provided as buffer
 const b64 = font.toString(`base64`)
@@ -93,30 +96,40 @@ const b64 = font.toString(`base64`)
 
 <br />
 
-## strength
-     * obfuscation strength multiplier ( default: 1 )
-     * all under 0.1 makes no sense ( paths can be simply back calculated )
-     * all over 10 makes no sense ( looks like 💩 )
+### strength
+
+  > obfuscation strength multiplier ( default: 1 ) <br />
+  > all under 0.1 makes no sense ( paths can be simply back calculated ) <br />
+  > all over 10 makes no sense ( looks like 💩 )
 
 <img src="./docs/obfuscationstrength.jpg">
 
 <br />
 <br />
 
-## characterRange
-[character range](https://www.ling.upenn.edu/courses/Spring_2003/ling538/UnicodeRanges.html) used for encryption
+### characterRange
 
+  > [character range](https://www.ling.upenn.edu/courses/Spring_2003/ling538/UnicodeRanges.html) used for encryption
 
-- PRIVATE_USE_AREA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ___DEFAULT___
-- LATIN
-- GREEK
-- CYRILLIC
-- HIRAGANA
-- KATAKANA
+  > - PRIVATE_USE_AREA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ___DEFAULT___
+  > - LATIN
+  > - GREEK
+  > - CYRILLIC
+  > - HIRAGANA
+  > - KATAKANA
 
-<br />
-<br />
-<br />
+ <br />
+
+### lowMemory 
+
+ 
+   > DEFAULT: **false**
+		
+   > use only if you do not have a lot of memory and noscrape cannot load the given font file
+
+   <br />
+   <br />
+   <br />
 
 # Contributions
 
