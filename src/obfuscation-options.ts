@@ -12,14 +12,22 @@ export interface ObfuscationOptions {
    *  optional: the character-range to pick obfuscation glyphs from
    */
   characterRange?: EncryptionCharacterRange;
+
+  /**
+   * optional: lowMemory option
+   * use if to less memory availible for loading font
+   */
+   lowMemory?: boolean;
 }
 
 interface ObfuscationDefaultOptions extends ObfuscationOptions {
   strength: number;
   characterRange: EncryptionCharacterRange;
+  lowMemory: boolean;
 }
 
 export const DEFAULT_OPTIONS: ObfuscationDefaultOptions = {
   strength: 1,
   characterRange: EncryptionCharacterRange.PRIVATE_USE_AREA,
+  lowMemory: false,
 }	

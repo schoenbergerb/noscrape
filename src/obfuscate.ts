@@ -1,4 +1,4 @@
-import { load } from "opentype.js";
+import { loadSync } from "opentype.js";
 import { DEFAULT_OPTIONS, ObfuscationOptions } from "./obfuscation-options";
 import { obfuscateGlyphs } from "./glyph";
 import { generateObfuscatedFont } from "./font";
@@ -15,9 +15,9 @@ export async function obfuscate<T extends string | number | object>(
   fontFilePath: string,
   options?: ObfuscationOptions
 ): Promise<{ value: T, font: Buffer }> {  
-  const { characterRange, strength } = { ...DEFAULT_OPTIONS, ...options }
+  const { characterRange, strength, lowMemory } = { ...DEFAULT_OPTIONS, ...options }
 
-  const font = await load(fontFilePath, null, {});
+  const font = loadSync(fontFilePath, { lowMemory });
 
   const originalGlyphs = value2glyphs(value, font);
 
