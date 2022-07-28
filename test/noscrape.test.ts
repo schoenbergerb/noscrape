@@ -83,4 +83,8 @@ describe("font obfuscation", () => {
     expect(font.byteLength).toBe(1996)
   })
 
+  it ("should run on low memory", async () => {
+    const { font } = await obfuscate(0, 'example/example.ttf', { lowMemory: true })
+    expect(font.byteLength).toBe(1996)
+  })
 });
