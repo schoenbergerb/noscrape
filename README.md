@@ -94,38 +94,35 @@ const b64 = font.toString(`base64`)
 
 # Options
 
-<br />
+## strength
 
-### strength
-
-  > obfuscation strength multiplier ( default: 1 ) <br />
-  > all under 0.1 makes no sense ( paths can be simply back calculated ) <br />
-  > all over 10 makes no sense ( looks like 💩 )
+##### obfuscation strength multiplier ( default: 1 )
+##### all under 0.1 makes no sense ( paths can be simply back calculated )
+##### all over 10 makes no sense ( looks like 💩 )
 
 <img src="./docs/obfuscationstrength.jpg">
 
 <br />
-<br />
 
-### characterRange
+## characterRange
 
-  > [character range](https://www.ling.upenn.edu/courses/Spring_2003/ling538/UnicodeRanges.html) used for encryption
+##### [character range](https://www.ling.upenn.edu/courses/Spring_2003/ling538/UnicodeRanges.html) used for encryption
 
-  > - PRIVATE_USE_AREA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ___DEFAULT___
-  > - LATIN
-  > - GREEK
-  > - CYRILLIC
-  > - HIRAGANA
-  > - KATAKANA
+###### PRIVATE_USE_AREA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ___DEFAULT___
+###### LATIN
+###### GREEK
+###### CYRILLIC
+###### HIRAGANA
+###### KATAKANA
 
  <br />
 
-### lowMemory 
+## lowMemory
 
- 
-   > DEFAULT: **false**
+##### use only if you do not have a lot of memory and noscrape cannot load the given font file
+
+###### DEFAULT: **false**
 		
-   > use only if you do not have a lot of memory and noscrape cannot load the given font file
 
    <br />
    <br />
