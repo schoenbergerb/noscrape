@@ -119,9 +119,10 @@ const b64 = font.toString(`base64`)
 
 ## lowMemory
 
-##### DEFAULT: **false**
-		
 ##### use only if you do not have a lot of memory and noscrape cannot load the given font file
+
+###### DEFAULT: **false**
+		
 
    <br />
    <br />
