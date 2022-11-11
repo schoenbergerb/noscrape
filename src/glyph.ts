@@ -13,8 +13,16 @@ export function obfuscateGlyphs(
 ): GlyphObfuscationResult {
   const translation = new Map<number, number>();
 
-  const glyphs = originalGlyphs.map((glyph, index) => {
+  const glyphs: Glyph[] = [];
+
+  for (let index = 0; index < originalGlyphs.length; index += 1) {
+    const glyph = originalGlyphs[index];
+
     const unicode = index + characterRange;
+
+    if (!glyph.unicode) {
+      continue;
+    }
 
     translation.set(glyph.unicode, unicode);
 
@@ -33,14 +41,16 @@ export function obfuscateGlyphs(
     const { path } = glyph
     path.commands = commands;
 
-    return new Glyph({
+    const g =  new Glyph({
       index,
       name: Number(unicode).toString(16),
       unicode,
       path,
       advanceWidth: glyph.advanceWidth,
     });
-  });
+
+    glyphs.push(g);
+  }
 
   return { translation, glyphs };
 }
