@@ -41,8 +41,8 @@ export function obfuscateGlyphs(
     const { path } = glyph
     path.commands = commands;
 
-    const g =  new Glyph({
-      index,
+    const g = new Glyph({
+      index: index + 1,
       name: Number(unicode).toString(16),
       unicode,
       path,
@@ -51,6 +51,9 @@ export function obfuscateGlyphs(
 
     glyphs.push(g);
   }
+
+  glyphs.unshift(new Glyph({ index: 0, name: 'NOTDEF', advanceWidth: 0 }))
+
 
   return { translation, glyphs };
 }
