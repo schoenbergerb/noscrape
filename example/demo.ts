@@ -1,13 +1,17 @@
-import obfuscate from '../src'
-import { EncryptionCharacterRange } from '../src/encryption-character-range.enum'
-import fs from 'fs'
+import { obfuscate } from '../src';
+import { EncryptionCharacterRange } from '../src/encryption-character-range.enum';
+import fs from 'fs';
+import express from 'express';
 
-obfuscate(
-    { data: "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!§$%&/()=?¬”#£ﬁ^``-,.-M:;_,,;#+#+äöü"}, 
-    __dirname + "/example.ttf",
-    { characterRange: EncryptionCharacterRange.KATAKANA }
-).then(({value, font}) => {
-    fs.writeFileSync('./example.html', `
+const app = express()
+
+app.get('/', (req, res) => {
+    obfuscate(
+        { data: "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!\"§$%&/()=¹²³¼½¬{[]},.-;:_·…–<>|"}, 
+        __dirname + "/example.ttf",
+        { characterRange: EncryptionCharacterRange.PRIVATE_USE_AREA }
+    ).then(({value, font}) => {
+        res.send(`
         <html>
             <head>
                 <style>
@@ -22,4 +26,13 @@ obfuscate(
             </body>
         </html>    
     `)
+    })
 })
+
+
+app.listen(1337, () => {
+    console.log('listen on port', 1337)
+})
+
+
+

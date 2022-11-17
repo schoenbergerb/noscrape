@@ -17,7 +17,7 @@ export interface ObfuscationOptions {
    * optional: lowMemory option
    * use if to less memory availible for loading font
    */
-   lowMemory?: boolean;
+  lowMemory?: boolean;
 }
 
 interface ObfuscationDefaultOptions extends ObfuscationOptions {
@@ -30,4 +30,4 @@ export const DEFAULT_OPTIONS: ObfuscationDefaultOptions = {
   strength: 1,
   characterRange: EncryptionCharacterRange.PRIVATE_USE_AREA,
   lowMemory: false,
-}	
+};
