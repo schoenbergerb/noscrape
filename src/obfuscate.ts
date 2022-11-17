@@ -14,14 +14,21 @@ export async function obfuscate<T extends string | number | object>(
   value: T,
   fontFilePath: string,
   options?: ObfuscationOptions
-): Promise<{ value: T, font: Buffer }> {  
-  const { characterRange, strength, lowMemory } = { ...DEFAULT_OPTIONS, ...options }
+): Promise<{ value: T; font: Buffer }> {
+  const { characterRange, strength, lowMemory } = {
+    ...DEFAULT_OPTIONS,
+    ...options,
+  };
 
   const font = loadSync(fontFilePath, { lowMemory });
 
   const originalGlyphs = value2glyphs(value, font);
 
-  const { translation, glyphs } = obfuscateGlyphs(originalGlyphs, characterRange, strength);
+  const { translation, glyphs } = obfuscateGlyphs(
+    originalGlyphs,
+    characterRange,
+    strength
+  );
 
   const buffer = generateObfuscatedFont(font, glyphs);
 

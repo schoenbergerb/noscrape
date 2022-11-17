@@ -2,32 +2,35 @@ import { Font, Glyph, Path } from "opentype.js";
 
 /**
  * pick all necessary characters from given value
- * @param object 
- * @param set 
- * @returns 
+ * @param object
+ * @param set
+ * @returns
  */
 const values = (object, set: Set<any>) => {
   switch (typeof object) {
-    case 'number':
-    case 'string':
-      `${object}`.split('').forEach(c => set.add(c));
+    case "number":
+    case "string":
+      `${object}`.split("").forEach((c) => set.add(c));
       break;
-    case 'object':
-      Object.values(object).map(v => values(v, set));
+    case "object":
+      Object.values(object).map((v) => values(v, set));
       break;
     default:
       break;
   }
 
-  return set
+  return set;
 };
 
-export default function value2glyphs<T>(value: T, font: Font): (Glyph & { path: Path })[] {
+export default function value2glyphs<T>(
+  value: T,
+  font: Font
+): (Glyph & { path: Path })[] {
   const uniqChars = [...values(value, new Set())];
 
-  const shuffled = uniqChars.sort(() => Math.random() - .5);
+  const shuffled = uniqChars.sort(() => Math.random() - 0.5);
 
-  const glyphs = font.stringToGlyphs(shuffled.join(''));
+  const glyphs = font.stringToGlyphs(shuffled.join(""));
 
   const notDefGlyph = font.glyphs.get(0);
 
