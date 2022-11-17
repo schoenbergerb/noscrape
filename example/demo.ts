@@ -7,9 +7,9 @@ const app = express()
 
 app.get('/', (req, res) => {
     obfuscate(
-        { data: "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"}, 
+        { data: "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!\"§$%&/()=¹²³¼½¬{[]},.-;:_·…–<>|"}, 
         __dirname + "/example.ttf",
-        { characterRange: EncryptionCharacterRange.LATIN }
+        { characterRange: EncryptionCharacterRange.PRIVATE_USE_AREA }
     ).then(({value, font}) => {
         res.send(`
         <html>
