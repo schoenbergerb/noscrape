@@ -2,7 +2,7 @@
   "name": "@noscrape/noscrape",
   "version": "0.4.3",
   "description": "protect your content from scraping",
-  "homepage": "https://noscrape-nexample.vercel.app",
+  "homepage": "https://noscrape-example.vercel.app",
   "keywords": [
     "scraping",
     "noscrape",
