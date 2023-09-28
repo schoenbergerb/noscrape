@@ -7,135 +7,83 @@
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
 [![issues - noscrape](https://img.shields.io/github/issues/schoenbergerb/noscrape)](https://github.com/schoenbergerb/noscrape/issues)
 ![Known Vulnerabilities](https://snyk.io/test/github/schoenbergerb/noscrape/badge.svg)
-![CodeQL](https://github.com/schoenbergerb/noscrape/workflows/CodeQL/badge.svg)
 
 
 
-<br />
-<br />
+# @noscrape/noscrape 
+
+## Concept
+The primary mechanism behind `noscrape` is the utilization of any true-type font. From this, `noscrape` generates a new version with shuffled unicodes, ensuring that it's impossible to reverse-calculate them. This means that both strings and integers are obfuscated and can only be deciphered using the generated obfuscation-font. 
+
+While the glyph-paths inside the font cannot be entirely removed, they are obfuscated by randomly shifting them slightly. This makes it challenging to reverse-calculate them, but it's not entirely impossible, especially for machine learning algorithms. The developers are open to suggestions for improving this aspect.
 
 
-# Project Goal 
+## Installation
 
-### this project should help you to prevent anyone from scraping your content
+To install the `@noscrape/noscrape` package, simply run the following command in your project directory:
 
-<br />
-<br />
-<br />
+```bash
+npm install @noscrape/noscrape
+```
 
-# Concept
-The key behind is to use any true-type font from which _noscrape_ generates a new version with shuffled unicodes and nothing what one can use to calculate them back. Strings and Integers become obfuscated and are only readable by using the generated obfuscation-font.
+## Basic Usage
 
-<br /><br />
-What we cannot remove from inside the font are the glyph-paths. At the moment the paths are obfuscated by shifting them randomly a little bit _( @see [obfuscation strength multiplier](#strength) )_ that makes it hard to calculate them back but not impossible or maybe "guessable" by a ML-Algorithm.<br /> Would be nice if someone come up with a better solution or help to improve this 😅
-
-
-<br />
-<br />
-<br />
-
-# _IMPORTANT NOTE_
-
-Bots are not able to process obfuscated text or it comes to unpredictable analytics results etc. 
-<br>
-So please beware of using this technology on relevant content for indexed pages!
-<br />
-<br />
-Doing the whole obfuscation stuff tooks time (something around 50-60ms on my machine 😉).<br>
-This should not be problem with prerendered pages. For API-Requests, one sould consider putting obfuscation logic into a cronjob like task and use them multiple times instead of calculate everything again for every request.
-<br />
-<br />
-<br />
-
-
-# Example
-
+##### Server-side
 ```typescript
-// server-side obfuscation
-const object = { title: "noscrape", text: "obfuscation" }
-const { font, value }  = obfuscate(object, 'path/to/your/font.ttf')
+const { obfuscate } = require('@noscrape/noscrape');
 
+// Sample object to obfuscate
+const object = { title: "noscrape", text: "obfuscation" };
+
+// Server-side obfuscation
+const { font, value } = obfuscate(object, 'path/to/your/font.ttf');
 ```
-<br />
-<p style="text-align: center">⬇⬇⬇⬇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;provide data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬇⬇⬇⬇</p>
-<br />
 
-```javascript
-// font will be provided as buffer
-const b64 = font.toString(`base64`)
-```
-```html
-<!-- client-side visualization-->
-
-
+##### Client-side
+```typescript
 <style> 
     @font-face {        
         font-family: 'noscrape-obfuscated';        
-        src: url('data:font/truetype;charset=utf-8;base64,${b64}');    
+        src: url('data:font/truetype;charset=utf-8;base64,${font.toString("base64")}');    
     }
 </style>
-
-...
-
+```
+The font is delivered in a buffer format. To utilize it in our web pages, we convert it into a `base64` URL and embed it within a custom `@font-face` declaration. Once this is done, we can display the obfuscated data using the specified `font-family` in our styles.
+```typescript
 <span style="font-family: noscrape-obfuscated">
     <div>{ value.title }</div>
     <div>{ value.text }</div>
-</span>    
+</span>
 ```
 
+#### [example-code](https://github.com/schoenbergerb/noscrape-example) 
+
+#### [live demo](https://noscrape-example.vercel.app) 
+
+## IMPORTANT NOTE
+Bots might not be able to process obfuscated text, which can lead to unpredictable analytics results. Therefore, it's advised not to use this technology on content that's essential for indexed pages. The obfuscation process takes some time (around 50-60ms on standard machines). For API requests, it's recommended to put the obfuscation logic into a scheduled task and reuse the results, rather than recalculating everything for every request.
+
+## Options
+- **Strength (obfuscation strength multiplier)**: Default is 1. Values below 0.1 are not recommended as paths can be easily reverse-calculated. Values over 10 might not look visually appealing.
+<img src="./docs/obfuscationstrength.jpg" width="500">
 <br />
 
-[example-code](https://github.com/schoenbergerb/noscrape-example) 
-
-[live demo](https://noscrape-example.vercel.app) 
+  
+- **Character Range**: This defines the [character range](https://www.ling.upenn.edu/courses/Spring_2003/ling538/UnicodeRanges.html) used for encryption. Options include:
+  - PRIVATE_USE_AREA (default)
+  - LATIN
+  - GREEK
+  - CYRILLIC
+  - HIRAGANA
+  - KATAKANA
 <br />
-<br />
-<br />
-
-# Options
-
-## strength
-
-##### obfuscation strength multiplier ( default: 1 )
-##### all under 0.1 makes no sense ( paths can be simply back calculated )
-##### all over 10 makes no sense ( looks like 💩 )
-
-<img src="./docs/obfuscationstrength.jpg">
+  
+- **Low Memory**: This option is for situations with limited memory where `noscrape` cannot load the provided font file. Default is false.
 
 <br />
 
-## characterRange
+## Contributions
+The developers welcome contributions, issues, and feature requests. If you've used this package and fixed a bug, they encourage you to submit a PR.
 
-##### [character range](https://www.ling.upenn.edu/courses/Spring_2003/ling538/UnicodeRanges.html) used for encryption
-
-###### PRIVATE_USE_AREA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ___DEFAULT___
-###### LATIN
-###### GREEK
-###### CYRILLIC
-###### HIRAGANA
-###### KATAKANA
-
- <br />
-
-## lowMemory
-
-##### use only if you do not have a lot of memory and noscrape cannot load the given font file
-
-###### DEFAULT: **false**
-		
-
-   <br />
-   <br />
-   <br />
-
-# Contributions
-
-Contributions, issues and feature requests are very welcome. If you are using this package and fixed a bug for yourself, please consider submitting a PR!
-
-<br />
-<br />
-<br />
-
-# License
-
-[MIT](https://github.com/schoenbergerb/noscrape/blob/main/LICENSE) @ Bernhard Schönberger
+## License
+The package is licensed under the [MIT License](https://github.com/schoenbergerb/noscrape/blob/main/LICENSE) by Bernhard Schönberger.
