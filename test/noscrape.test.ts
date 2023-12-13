@@ -16,7 +16,7 @@ describe("font obfuscation", () => {
 
     const number = 1234567890
   
-    const { font, value } = await obfuscate(number, 'example/example.ttf')
+    const { value } = await obfuscate(number, 'example/example.ttf')
     
     expect(`${value}`).not.toBeNull()
     expect(`${value}`).not.toBe(number)
@@ -57,9 +57,6 @@ describe("font obfuscation", () => {
   })
 
   it("should render all unicode ranges", async () => {
-
-    const ranges = Object.keys(EncryptionCharacterRange)
-
     for (const val in EncryptionCharacterRange) {
 
       const characterRange = Number(val)
