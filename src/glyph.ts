@@ -21,6 +21,7 @@ export function obfuscateGlyphs(
     const unicode = index + characterRange;
 
     if (!glyph.unicode) {
+      // eslint-disable-next-line no-continue
       continue;
     }
 

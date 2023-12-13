@@ -22,7 +22,7 @@ const values = (object, set: Set<any>) => {
   return set;
 };
 
-export default function value2glyphs<T>(
+export function value2glyphs<T>(
   value: T,
   font: Font,
 ): (Glyph & { path: Path })[] {
