@@ -1,4 +1,4 @@
-import { obfuscate, EncryptionCharacterRange } from '../src'
+import {obfuscate, EncryptionCharacterRange, Noscrape} from '../src'
 
 const demoObject = {
   a: "abcdefghijklmnopqrstuvwxyz",
@@ -86,5 +86,16 @@ describe("font obfuscation", () => {
   it ("should run on low memory", async () => {
     const { font } = await obfuscate(0, 'example/example.ttf', { lowMemory: true })
     expect(font.byteLength).toBe(1884)
+  })
+
+
+  it ("should run on low memory", async () => {
+    const noscrape = new Noscrape('example/example.ttf')
+    noscrape.obfuscate("test123");
+    noscrape.obfuscate(1234567890)
+    noscrape.obfuscate({ nested: "data" })
+    noscrape.getFont();
+    expect((noscrape as any).glyphs.length).toBe(16);
+    expect(((noscrape as any).translation as Map<number, number>).size).toBe(15);
   })
 });
