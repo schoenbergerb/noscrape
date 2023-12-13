@@ -5,11 +5,12 @@
     "plugin:prettier/recommended"
   ],
   "parserOptions": {
-      "project": "./tsconfig.json"
+    "project": "./tsconfig.json"
   },
   "rules": {
     "import/prefer-default-export": "off",
-    "import/no-default-export": "error"
-  },
-
+    "import/no-default-export": "error",
+    "class-methods-use-this": "off",
+    "no-underscore-dangle": "off"
+  }
 }

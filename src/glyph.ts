@@ -9,7 +9,7 @@ type GlyphObfuscationResult = {
 export function obfuscateGlyphs(
   originalGlyphs: (Glyph & { path: Path })[],
   characterRange: EncryptionCharacterRange,
-  strength: number
+  strength: number,
 ): GlyphObfuscationResult {
   const translation = new Map<number, number>();
 
@@ -42,7 +42,7 @@ export function obfuscateGlyphs(
     path.commands = commands;
 
     const g = new Glyph({
-      index: index + 1,
+      index,
       name: Number(unicode).toString(16),
       unicode,
       path,

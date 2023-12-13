@@ -24,7 +24,7 @@ const values = (object, set: Set<any>) => {
 
 export default function value2glyphs<T>(
   value: T,
-  font: Font
+  font: Font,
 ): (Glyph & { path: Path })[] {
   const uniqChars = [...values(value, new Set())];
 

@@ -13,7 +13,7 @@ import { obfuscateValue } from "./obfuscate/value";
 export async function obfuscate<T extends string | number | object>(
   value: T,
   fontFilePath: string,
-  options?: ObfuscationOptions
+  options?: ObfuscationOptions,
 ): Promise<{ value: T; font: Buffer }> {
   const { characterRange, strength, lowMemory } = {
     ...DEFAULT_OPTIONS,
@@ -27,7 +27,7 @@ export async function obfuscate<T extends string | number | object>(
   const { translation, glyphs } = obfuscateGlyphs(
     originalGlyphs,
     characterRange,
-    strength
+    strength,
   );
 
   const buffer = generateObfuscatedFont(font, glyphs);
