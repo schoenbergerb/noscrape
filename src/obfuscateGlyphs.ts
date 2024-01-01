@@ -20,7 +20,7 @@ export default ({
   for (let index = 0; index < originalGlyphs.length; index += 1) {
     const glyph = originalGlyphs[index];
 
-    const unicode = index + characterRange;
+    const unicode = glyphs.length + characterRange;
 
     if (!glyph.unicode || translation.get(glyph.unicode)) {
       // eslint-disable-next-line no-continue
