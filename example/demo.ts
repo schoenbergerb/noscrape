@@ -1,16 +1,15 @@
-import { obfuscate } from '../src';
-import { EncryptionCharacterRange } from '../src';
 import express from 'express';
-import {Noscrape} from "../src/noscrape";
+import {Noscrape} from "../src";
 
 const app = express()
 
 app.get('/', (req, res) => {
     const noscrape = new Noscrape(__dirname + "/example.ttf");
 
-    const test3 = noscrape.obfuscate({ data: "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!\"§$%&/()=¹²³¼½¬{[]},.-;:_·…–<>|"});
     const test1= noscrape.obfuscate("test1");
     const test2= noscrape.obfuscate(123456789);
+    const test3 = noscrape.obfuscate({ data: "aniceobject" });
+    const test4 = noscrape.obfuscate( "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!\"§$%&/()=¹²³¼½¬{[]},.-;:_·…–<>|");
 
     // language=HTML
     res.send(`
@@ -28,6 +27,7 @@ app.get('/', (req, res) => {
                 <p>${test1}</p>
                 <p>${test2}</p>
                 <p>${test3.data}</p>
+                <p>${test4}</p>
             </body>
         </html>    
     `)
