@@ -2,18 +2,18 @@ import { Font, Glyph, Path } from "opentype.js";
 
 /**
  * pick all necessary characters from given value
- * @param object
- * @param set
+ * @param {string | number | object} value
+ * @param {Set<string>} set
  * @returns
  */
-const values = (object, set: Set<any>) => {
-  switch (typeof object) {
+const values = (value: string | number | object, set: Set<string>) => {
+  switch (typeof value) {
     case "number":
     case "string":
-      `${object}`.split("").forEach((c) => set.add(c));
+      `${value}`.split("").forEach((c) => set.add(c));
       break;
     case "object":
-      Object.values(object).map((v) => values(v, set));
+      Object.values(value).map((v) => values(v, set));
       break;
     default:
       break;
@@ -22,7 +22,14 @@ const values = (object, set: Set<any>) => {
   return set;
 };
 
-export function value2glyphs<T>(
+/**
+ * Converts a value into an array of glyphs based on the provided font.
+ *
+ * @param {T extends string | number | object} value - The value to be converted into glyphs.
+ * @param {Font} font - The font used to convert the value into glyphs.
+ * @returns {(Glyph & { path: Path })[]} - An array of glyphs representing the value.
+ */
+export function value2glyphs<T extends string | number | object>(
   value: T,
   font: Font,
 ): (Glyph & { path: Path })[] {

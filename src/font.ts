@@ -1,6 +1,14 @@
-import { Font } from "opentype.js";
+import { Font, Glyph } from "opentype.js";
 
-export function generateObfuscatedFont(font, glyphs) {
+/**
+ * Generates an obfuscated font based on the provided font and glyphs.
+ *
+ * @param {Font} font - The original font object to be obfuscated.
+ * @param {Glyph[]} glyphs - An array of glyphs used for the obfuscation process.
+ * @returns {Buffer} A buffer containing the obfuscated font data.
+ */
+export function generateObfuscatedFont(font: Font, glyphs: Glyph[]): Buffer {
+  // Create a new font object with the necessary properties
   const newFont = new Font({
     familyName: "noscrape",
     styleName: "obfuscated",
@@ -10,7 +18,7 @@ export function generateObfuscatedFont(font, glyphs) {
     glyphs,
   });
 
-  // provide original font informations if availible
+  // Provide original font information if available
   if (font.names) {
     newFont.names = font.names;
   }
