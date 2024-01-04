@@ -1,4 +1,4 @@
-import {obfuscate, EncryptionCharacterRange, Noscrape} from '../src'
+import { EncryptionCharacterRange, Noscrape } from '../src'
 
 const demoObject = {
   a: "abcdefghijklmnopqrstuvwxyz",
@@ -11,22 +11,24 @@ const demoObject = {
 
 describe("font obfuscation", () => {
 
+  let noscrape: Noscrape;
+  beforeEach(() => {
+    noscrape = new Noscrape('example/example.ttf')
+  })
 
   it("should obfuscate simple number", async () => {
-
     const number = 1234567890
-  
-    const { value } = await obfuscate(number, 'example/example.ttf')
+
+    const value = noscrape.obfuscate(1234567890)
     
     expect(`${value}`).not.toBeNull()
     expect(`${value}`).not.toBe(number)
   })
   
   it("should obfuscate simple string", async () => {
-  
     const simpleString = "noscrape"
   
-    const { value } = await obfuscate(simpleString, 'example/example.ttf')
+    const value = noscrape.obfuscate(simpleString)
   
     expect(value).not.toBeNull()
     expect(value).not.toBe(simpleString)
@@ -34,7 +36,6 @@ describe("font obfuscation", () => {
   })
 
   it('should obfuscate object', async () => {
-
     const object = {
       string: "noscrape",
       integer: 1234567890,
@@ -43,9 +44,8 @@ describe("font obfuscation", () => {
       }
     }
 
-    const { font, value } = await obfuscate(object, 'example/example.ttf', {
-      strength: 5
-    })
+    const value = noscrape.obfuscate(object);
+    const font = noscrape.getFont();
 
     expect(font).not.toBeNull()
     expect(value).not.toBeNull()
@@ -64,24 +64,25 @@ describe("font obfuscation", () => {
       if (isNaN(characterRange)) {
         continue
       }
+      const noscrape = new Noscrape('example/example.ttf', { characterRange })
 
-      const { value } = await obfuscate<any>(demoObject, 'example/example.ttf', {
-        characterRange
-      })
+      const value = noscrape.obfuscate(demoObject);
 
       expect(value.a).toHaveLength(26)
       expect(value.b).toHaveLength(26)
-
     }
   })
 
   it ("should match font size", async () => {
-    const { font } = await obfuscate(0, 'example/example.ttf')
+    noscrape.obfuscate(0)
+    const font = noscrape.getFont()
     expect(font.byteLength).toBe(1884)
   })
 
   it ("should run on low memory", async () => {
-    const { font } = await obfuscate(0, 'example/example.ttf', { lowMemory: true })
+    const noscrape =  new Noscrape('example/example.ttf', { lowMemory: true })
+    noscrape.obfuscate(0);
+    const font = noscrape.getFont();
     expect(font.byteLength).toBe(1884)
   })
 
