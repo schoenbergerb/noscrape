@@ -6,6 +6,7 @@ import { value2glyphs } from "./value2glyphs";
 import { obfuscateValue } from "./obfuscate/value";
 
 /**
+ * @deprecated use object-orientated approach instead -> const noscrape = new Noscrape('path/to/font')
  * @param value object which will be translated
  * @param fontFilePath
  * @param options
