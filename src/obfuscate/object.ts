@@ -1,12 +1,12 @@
+import { cloneDeep } from "lodash";
 import { obfuscateNumber } from "./number";
 import { obfuscateString } from "./string";
-import { copy } from "./copy";
 
 export function obfuscateObject<T extends object>(
   value: T,
-  translation: Map<number, number>
+  translation: Map<number, number>,
 ): T {
-  const obj = copy(value);
+  const obj = cloneDeep(value);
 
   Object.keys(obj).forEach((key) => {
     switch (typeof obj[key]) {
