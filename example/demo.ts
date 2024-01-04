@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 
     const test1= noscrape.obfuscate("test1");
     const test2= noscrape.obfuscate(123456789);
-    const test3 = noscrape.obfuscate({ data: "aniceobject" });
+    const test3 = noscrape.obfuscate({ data: "a-nice-object" });
     const test4 = noscrape.obfuscate( "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!\"§$%&/()=¹²³¼½¬{[]},.-;:_·…–<>|");
 
     // language=HTML
