@@ -9,14 +9,19 @@ type Props = {
   glyphs: Glyph[];
 };
 
-// eslint-disable-next-line import/no-default-export
-export default ({
+/**
+ * Obfuscates glyphs by modifying their paths and adding them to a translation map.
+ *
+ * @param {Props} props - The properties required for glyph obfuscation.
+ * @returns {Object} - An object containing the updated translation map and glyphs array.
+ */
+export function obfuscateGlyphs({
   originalGlyphs,
   characterRange,
   strength,
   translation,
   glyphs,
-}: Props) => {
+}: Props): object {
   for (let index = 0; index < originalGlyphs.length; index += 1) {
     const glyph = originalGlyphs[index];
 
@@ -56,4 +61,4 @@ export default ({
   }
 
   return { translation, glyphs };
-};
+}
