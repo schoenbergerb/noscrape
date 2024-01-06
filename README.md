@@ -9,9 +9,6 @@
 ![Known Vulnerabilities](https://snyk.io/test/github/schoenbergerb/noscrape/badge.svg)
 
 
-
-# @noscrape/noscrape 
-
 ## Concept
 The primary mechanism behind `noscrape` is the utilization of any true-type font. From this, `noscrape` generates a new version with shuffled unicodes, ensuring that it's impossible to reverse-calculate them. This means that both strings and integers are obfuscated and can only be deciphered using the generated obfuscation-font. 
 
@@ -45,10 +42,13 @@ that AI thrives on data, and your data is a valuable commodity that shouldn't be
    - PIN/TAN numbers
    - Bot protection (captcha)
 
+<br /><br />
 
-## [Example-code](https://github.com/schoenbergerb/noscrape-example)
+### [Example code](https://github.com/schoenbergerb/noscrape-example)
 
-## [Live demo](https://noscrape-example.vercel.app)
+### [Live demo](https://noscrape-example.vercel.app)
+
+<br />
 
 ## Installation
 
