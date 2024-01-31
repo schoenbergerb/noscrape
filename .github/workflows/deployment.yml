@@ -8,19 +8,19 @@ on:
 
 jobs:
   deploy:
-  
+
     runs-on: ubuntu-latest
-    
+
     steps:
-    
+
        - name: checkout code
          uses: actions/checkout@v2
 
        - name: setup node
          uses: actions/setup-node@v2
          with:
-           node-version: '16'
-           registry-url: https://npm.pkg.github.com 
+           node-version: '20'
+           registry-url: https://npm.pkg.github.com
 
        - name: install dependencies
          run: npm install
@@ -28,8 +28,11 @@ jobs:
        - name: build
          run: npm run build
 
-       - name: test
-         run: npm t
+       - name: Install playwright browsers
+         run: npx playwright install --with-deps
+
+       - name: Run tests
+         run: npx playwright test --update-snapshots --reporter=list
 
        - name: security
          run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
