@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { getComparator, Comparator } from "playwright-core/lib/utils";
 
 test("test original<>obfuscated text-content different ", async ({ page }) => {
   await page.goto("/");
@@ -28,13 +29,11 @@ test("test original<>obfuscated text-content different ", async ({ page }) => {
 test("test original<>obfuscated visual equal", async ({ page }) => {
   await page.goto("/");
 
-  const original = await page
-    .locator("table#original")
-    .screenshot({ path: "visual-compare.png" });
-  const obfuscated = await page
-    .locator("table#obfuscated")
-    .screenshot({ path: "visual-compare.png" });
+  const original = await page.locator("table#original").screenshot();
+  const obfuscated = await page.locator("table#obfuscated").screenshot();
 
-  expect(original).toMatchSnapshot({ maxDiffPixels: 5 });
-  expect(obfuscated).toMatchSnapshot({ maxDiffPixels: 5 });
+  const comparator = getComparator("image/png") as Comparator;
+  expect(
+    comparator(original, obfuscated, { maxDiffPixelRatio: 0.01 }),
+  ).toBeNull();
 });
