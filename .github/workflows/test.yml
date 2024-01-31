@@ -1,5 +1,5 @@
 #
-name: "npm deploy"
+name: "functional and visual test"
 
 on:
   push:
