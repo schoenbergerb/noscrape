@@ -1,4 +1,4 @@
-import { Font, Glyph, loadSync } from "opentype.js";
+import { Font, Glyph, loadSync, parse } from "opentype.js";
 import { DEFAULT_OPTIONS, ObfuscationOptions } from "./obfuscation-options";
 import { value2glyphs } from "./value2glyphs";
 import { obfuscateValue } from "./obfuscate/value";
@@ -23,16 +23,26 @@ export class Noscrape {
   /**
    * Initializes a new instance of the Noscrape class.
    *
-   * @param {string} fontFilePath - The file path to the true-type font.
+   * @param {string | ArrayBuffer | SharedArrayBuffer} font
+   *    In case of string: only local file path is provided. Otherwise, load file with fetch or similar api and provide
+   *    (Shared)ArrayBuffer to Noscrape. Working example can be found at the Demo-Server sources:
+   *    npm run demo -> http://localhost:1337/remote-demo
    * @param {ObfuscationOptions} options - Optional configuration options for obfuscation.
    */
-  constructor(fontFilePath: string, options?: ObfuscationOptions) {
+  constructor(
+    font: string | ArrayBuffer | SharedArrayBuffer,
+    options?: ObfuscationOptions,
+  ) {
     this.options = {
       ...DEFAULT_OPTIONS,
       ...options,
     };
 
-    this.font = loadSync(fontFilePath, { lowMemory: this.options.lowMemory });
+    if (typeof font === "string") {
+      this.font = loadSync(font, { lowMemory: this.options.lowMemory });
+    } else {
+      this.font = parse(font);
+    }
   }
 
   /**
