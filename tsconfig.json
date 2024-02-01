@@ -15,8 +15,10 @@
     "declarationMap": true
   },
   "exclude": [
+    "playwright*",
     "node_modules",
     "example",
+    "tests",
     "test"
   ]
 }
