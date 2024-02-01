@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
             </style>
         </head>
         <body class="">
-        
+
         <div style="width: 270px; height: 150px; overflow: hidden;">
             <table id="original">
                 <tr>
@@ -99,10 +99,34 @@ app.get('/', (req, res) => {
     `)
 })
 
+app.get('/remote-demo', async (_, res) => {
+    const response = await fetch('http://localhost:1337/example.ttf')
+    const buffer = await response.arrayBuffer();
 
-app.listen(1337, () => {
-    console.log('listen on port', 1337)
+    const noscrape = new Noscrape(buffer);
+
+    const text = noscrape.obfuscate("this is another demo");
+
+
+    res.send(`<html lang="en">
+        <head>
+            <title>Noscrape - DEMO</title>
+            <style>
+                @font-face {
+                    font-family: 'noscrape-obfuscated';
+                    src: url('data:font/truetype;charset=utf-8;base64,${noscrape.getFont().toString('base64')}');
+                }
+            </style>
+        </head>
+        <body style="height: 100%; display: flex; justify-content: center; align-items: center;">
+            <div style="font-family: 'noscrape-obfuscated'">${text}</div>
+        </body>
+        </html>
+    `)
 })
+
+
+app.listen(1337)
 
 
 
