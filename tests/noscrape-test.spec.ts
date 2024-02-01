@@ -1,7 +1,12 @@
 import { test, expect } from "@playwright/test";
 import { getComparator, Comparator } from "playwright-core/lib/utils";
 
-test("test original<>obfuscated text-content different ", async ({ page }) => {
+/**
+ * This test is designed to confirm that the unicodes of the original and obfuscated values differ. The goal is to
+ * ensure that, although the visual appearance of the glyphs remains consistent, the underlying unicode values have been
+ * successfully altered during the obfuscation process.
+ */
+test("test original<>obfuscated text is different ", async ({ page }) => {
   await page.goto("/");
 
   const count = await page.locator("table#original tr").count();
@@ -26,7 +31,12 @@ test("test original<>obfuscated text-content different ", async ({ page }) => {
   }
 });
 
-test("test original<>obfuscated visual equal", async ({ page }) => {
+/**
+ * This test aims to verify whether the rendered original glyphs and their obfuscated counterparts appear visually
+ * identical. The objective is to ensure that while the glyphs undergo obfuscation, their visual representation remains
+ * consistent and indistinguishable from the original.
+ */
+test("test visual equality", async ({ page }) => {
   await page.goto("/");
 
   const original = await page.locator("table#original").screenshot();
