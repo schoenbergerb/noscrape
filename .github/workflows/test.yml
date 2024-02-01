@@ -1,10 +1,10 @@
 #
-name: "npm deploy"
+name: "functional and visual test"
 
 on:
-  release:
-    types:
-      - created
+  push:
+    branches:
+      - '*'
 
 jobs:
   deploy:
@@ -33,9 +33,3 @@ jobs:
 
        - name: Run tests
          run: npx playwright test --update-snapshots --reporter=list
-
-       - name: security
-         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-
-       - name: deploy npmjs.com
-         run: npm publish --access public
