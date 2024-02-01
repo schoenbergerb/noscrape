@@ -1,6 +1,6 @@
 {
   "name": "@noscrape/noscrape",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "protect your content from scraping",
   "homepage": "https://noscrape-example.vercel.app",
   "keywords": [
@@ -14,7 +14,7 @@
     "defend",
     "protection"
   ],
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "scripts": {
     "build": "tsc",
     "test": "npx playwright test",
