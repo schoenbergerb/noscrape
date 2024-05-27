@@ -1,5 +1,6 @@
+> This repository will be replaced with a new implementation in the near future:
+> to to **https://github.com/noscrape** for more informations
 
-<img src="./docs/preview.png" alt="preview">
 <br />
 <br />
 
