@@ -1,5 +1,5 @@
 > This repository will be replaced with a new implementation in the near future:<br />
-> go to **https://github.com/noscrape** for more informations
+> go to **[https://github.com/noscrape/noscrape-node](https://github.com/noscrape/noscrape-node)** for more informations
 
 <br />
 <br />
